@@ -14,9 +14,9 @@ function App() {
   let switchNameHandler = () => {
     setPersons(
       [
-        { name: "名前変更１", age: 50 },
-        { name: "名前変更２", age: 55 },
-        { name: "名前変更３", age: 60 }
+        { name: "名前変更１", age: 40 },
+        { name: "名前変更２", age: 45 },
+        { name: "名前変更３", age: 50 }
       ])
   }
 
