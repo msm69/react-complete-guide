@@ -11,7 +11,7 @@ function App() {
     ]
   )
 
-  let switchNameHandler = () => {
+  const switchNameHandler = () => {
     setPersons(
       [
         { name: "名前変更１", age: 30 },
