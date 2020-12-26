@@ -11,10 +11,10 @@ function App() {
     ]
   )
 
-  const switchNameHandler = () => {
+  const switchNameHandler = (newName) => {
     setPersons(
       [
-        { name: "名前変更１", age: 30 },
+        { name: newName, age: 30 },
         { name: "名前変更２", age: 45 },
         { name: "名前変更３", age: 50 }
       ])
@@ -23,10 +23,19 @@ function App() {
   return (
     <div className="App">
       <h1>Hi,I`m a React app.</h1>
-      <button onClick={switchNameHandler}>Switch Name</button>
-      <Person name={persons[0].name} age={persons[0].age} />
-      <Person name={persons[1].name} age={persons[1].age} />
-      <Person name={persons[2].name} age={persons[2].age} >趣味はプログラミングです</Person>
+      <button onClick={() => switchNameHandler('新しい名前')}>Switch Name</button>
+      <Person
+        name={persons[0].name}
+        age={persons[0].age}
+        click={() => switchNameHandler('新しい名前１')} />
+      <Person
+        name={persons[1].name}
+        age={persons[1].age}
+        click={() => switchNameHandler('新しい名前２')} />
+      <Person
+        name={persons[2].name}
+        age={persons[2].age}
+        click={() => switchNameHandler('新しい名前３')} >趣味はプログラミングです</Person>
     </div>
   );
 }
