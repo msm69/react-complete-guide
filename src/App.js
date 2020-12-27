@@ -9,12 +9,14 @@ function App() {
     { name: "次郎2", age: 24 },
   ]);
 
+  const [showPersons, setShowPersons] = useState(false);
+
   const style = {
     backgroundColor: "white",
     font: "inherit",
     border: "1px solid blue",
     padding: "8px",
-    cursor: 'pointer'
+    cursor: "pointer",
   };
 
   const switchNameHandler = (newName) => {
@@ -33,30 +35,38 @@ function App() {
     ]);
   };
 
+  const togglePersonsHandler = () => {
+    setShowPersons(!showPersons);
+  };
+
   return (
     <div className="App">
       <h1>Hi,I`m a React app.</h1>
-      <button style={style} onClick={() => switchNameHandler("新しい名前")}>
-        Switch Name
+      <button style={style} onClick={togglePersonsHandler}>
+        Toggle Persons
       </button>
-      <Person
-        name={persons[0].name}
-        age={persons[0].age}
-        click={() => switchNameHandler("新しい名前１")}
-      />
-      <Person
-        name={persons[1].name}
-        age={persons[1].age}
-        click={() => switchNameHandler("新しい名前２")}
-        changed={nameChangeHandler}
-      />
-      <Person
-        name={persons[2].name}
-        age={persons[2].age}
-        click={() => switchNameHandler("新しい名前３")}
-      >
-        趣味はプログラミングです
-      </Person>
+      {showPersons ? (
+        <div>
+          <Person
+            name={persons[0].name}
+            age={persons[0].age}
+            click={() => switchNameHandler("新しい名前１")}
+          />
+          <Person
+            name={persons[1].name}
+            age={persons[1].age}
+            click={() => switchNameHandler("新しい名前２")}
+            changed={nameChangeHandler}
+          />
+          <Person
+            name={persons[2].name}
+            age={persons[2].age}
+            click={() => switchNameHandler("新しい名前３")}
+          >
+            趣味はプログラミングです
+          </Person>
+        </div>
+      ) : null}
     </div>
   );
 }
