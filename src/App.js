@@ -9,6 +9,14 @@ function App() {
     { name: "次郎2", age: 24 },
   ]);
 
+  const style = {
+    backgroundColor: "white",
+    font: "inherit",
+    border: "1px solid blue",
+    padding: "8px",
+    cursor: 'pointer'
+  };
+
   const switchNameHandler = (newName) => {
     setPersons([
       { name: newName, age: 30 },
@@ -28,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hi,I`m a React app.</h1>
-      <button onClick={() => switchNameHandler("新しい名前")}>
+      <button style={style} onClick={() => switchNameHandler("新しい名前")}>
         Switch Name
       </button>
       <Person
