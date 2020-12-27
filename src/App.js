@@ -39,34 +39,39 @@ function App() {
     setShowPersons(!showPersons);
   };
 
+  let personsData = null;
+  if (showPersons) {
+    personsData = (
+      <div>
+        <Person
+          name={persons[0].name}
+          age={persons[0].age}
+          click={() => switchNameHandler("新しい名前１")}
+        />
+        <Person
+          name={persons[1].name}
+          age={persons[1].age}
+          click={() => switchNameHandler("新しい名前２")}
+          changed={nameChangeHandler}
+        />
+        <Person
+          name={persons[2].name}
+          age={persons[2].age}
+          click={() => switchNameHandler("新しい名前３")}
+        >
+          趣味はプログラミングです
+        </Person>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <h1>Hi,I`m a React app.</h1>
       <button style={style} onClick={togglePersonsHandler}>
         Toggle Persons
       </button>
-      {showPersons ? (
-        <div>
-          <Person
-            name={persons[0].name}
-            age={persons[0].age}
-            click={() => switchNameHandler("新しい名前１")}
-          />
-          <Person
-            name={persons[1].name}
-            age={persons[1].age}
-            click={() => switchNameHandler("新しい名前２")}
-            changed={nameChangeHandler}
-          />
-          <Person
-            name={persons[2].name}
-            age={persons[2].age}
-            click={() => switchNameHandler("新しい名前３")}
-          >
-            趣味はプログラミングです
-          </Person>
-        </div>
-      ) : null}
+      {personsData}
     </div>
   );
 }
