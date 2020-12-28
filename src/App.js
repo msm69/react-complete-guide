@@ -28,7 +28,8 @@ function App() {
   };
 
   const deletePersonHandler = (personIndex) => {
-    const newPersons = persons.slice(0, persons.length);
+    // const newPersons = persons.slice(0, persons.length);
+    const newPersons = [...persons];
     newPersons.splice(personIndex, 1);
     setPersons(newPersons);
   };
