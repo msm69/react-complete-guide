@@ -19,20 +19,18 @@ function App() {
     cursor: "pointer",
   };
 
-  const switchNameHandler = (newName) => {
-    setPersons([
-      { name: newName, age: 30 },
-      { name: "名前変更２", age: 45 },
-      { name: "名前変更３", age: 50 },
-    ]);
-  };
-
   const nameChangeHandler = (event) => {
     setPersons([
       { name: "みずほ２", age: 30 },
       { name: event.target.value, age: 45 },
       { name: "名前変更３", age: 50 },
     ]);
+  };
+
+  const deletePersonHandler = (personIndex) => {
+    const newPersons = persons.slice(0, persons.length);
+    newPersons.splice(personIndex, 1);
+    setPersons(newPersons);
   };
 
   const togglePersonsHandler = () => {
@@ -43,8 +41,14 @@ function App() {
   if (showPersons) {
     personsData = (
       <div>
-        {persons.map((person) => {
-          return <Person name={person.name} age={person.age} />;
+        {persons.map((person, index) => {
+          return (
+            <Person
+              click={() => deletePersonHandler(index)}
+              name={person.name}
+              age={person.age}
+            />
+          );
         })}
       </div>
     );
