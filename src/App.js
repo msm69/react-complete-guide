@@ -4,9 +4,9 @@ import Person from "./Person/Person";
 
 function App() {
   const [persons, setPersons] = useState([
-    { name: "みずほ2", age: 29 },
-    { name: "太郎2", age: 26 },
-    { name: "次郎2", age: 24 },
+    { id: "asdf", name: "みずほ2", age: 29 },
+    { id: "qwer", name: "太郎2", age: 26 },
+    { id: "zxcv", name: "次郎2", age: 24 },
   ]);
 
   const [showPersons, setShowPersons] = useState(false);
@@ -48,6 +48,7 @@ function App() {
               click={() => deletePersonHandler(index)}
               name={person.name}
               age={person.age}
+              key={person.id}
             />
           );
         })}
