@@ -19,12 +19,18 @@ function App() {
     cursor: "pointer",
   };
 
-  const nameChangeHandler = (event) => {
-    setPersons([
-      { name: "みずほ２", age: 30 },
-      { name: event.target.value, age: 45 },
-      { name: "名前変更３", age: 50 },
-    ]);
+  const nameChangeHandler = (event, id) => {
+    const personIndex = persons.findIndex((element) => {
+      return element.id === id;
+    });
+
+    const targetPerson = { ...persons[personIndex] };
+    targetPerson.name = event.target.value;
+
+    const newPersons = [...persons]
+    newPersons[personIndex] = targetPerson;
+
+    setPersons(newPersons);
   };
 
   const deletePersonHandler = (personIndex) => {
@@ -49,6 +55,7 @@ function App() {
               name={person.name}
               age={person.age}
               key={person.id}
+              changed={(event) => nameChangeHandler(event, person.id)}
             />
           );
         })}
