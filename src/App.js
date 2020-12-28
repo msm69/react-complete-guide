@@ -43,24 +43,9 @@ function App() {
   if (showPersons) {
     personsData = (
       <div>
-        <Person
-          name={persons[0].name}
-          age={persons[0].age}
-          click={() => switchNameHandler("新しい名前１")}
-        />
-        <Person
-          name={persons[1].name}
-          age={persons[1].age}
-          click={() => switchNameHandler("新しい名前２")}
-          changed={nameChangeHandler}
-        />
-        <Person
-          name={persons[2].name}
-          age={persons[2].age}
-          click={() => switchNameHandler("新しい名前３")}
-        >
-          趣味はプログラミングです
-        </Person>
+        {persons.map((person) => {
+          return <Person name={person.name} age={person.age} />;
+        })}
       </div>
     );
   }
