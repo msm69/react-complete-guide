@@ -12,7 +12,8 @@ function App() {
   const [showPersons, setShowPersons] = useState(false);
 
   const style = {
-    backgroundColor: "white",
+    backgroundColor: "green",
+    color: "white",
     font: "inherit",
     border: "1px solid blue",
     padding: "8px",
@@ -27,7 +28,7 @@ function App() {
     const targetPerson = { ...persons[personIndex] };
     targetPerson.name = event.target.value;
 
-    const newPersons = [...persons]
+    const newPersons = [...persons];
     newPersons[personIndex] = targetPerson;
 
     setPersons(newPersons);
@@ -46,6 +47,7 @@ function App() {
 
   let personsData = null;
   if (showPersons) {
+    style.backgroundColor = "red";
     personsData = (
       <div>
         {persons.map((person, index) => {
