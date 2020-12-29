@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Radium from "radium";
 import Person from "./Person/Person";
 
 function App() {
@@ -18,6 +19,10 @@ function App() {
     border: "1px solid blue",
     padding: "8px",
     cursor: "pointer",
+    ":hover": {
+      backgroundColor: "lightgreen",
+      color: "black",
+    },
   };
 
   const nameChangeHandler = (event, id) => {
@@ -47,7 +52,6 @@ function App() {
 
   let personsData = null;
   if (showPersons) {
-    style.backgroundColor = "red";
     personsData = (
       <div>
         {persons.map((person, index) => {
@@ -63,6 +67,12 @@ function App() {
         })}
       </div>
     );
+
+    style.backgroundColor = "red";
+    style[":hover"] = {
+      backgroundColor: "lightred",
+      color: "black",
+    };
   }
 
   const classes = [];
@@ -85,4 +95,4 @@ function App() {
   );
 }
 
-export default App;
+export default Radium(App);
