@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 import Person from "./Person/Person";
 
 function App() {
@@ -84,14 +84,16 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Hi,I`m a React app.</h1>
-      <p className={classes.join(" ")}>正常に動作しています！</p>
-      <button style={style} onClick={togglePersonsHandler}>
-        Toggle Persons
-      </button>
-      {personsData}
-    </div>
+    <StyleRoot>
+      <div className="App">
+        <h1>Hi,I`m a React app.</h1>
+        <p className={classes.join(" ")}>正常に動作しています！</p>
+        <button style={style} onClick={togglePersonsHandler}>
+          Toggle Persons
+        </button>
+        {personsData}
+      </div>
+    </StyleRoot>
   );
 }
 
