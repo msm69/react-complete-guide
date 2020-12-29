@@ -65,9 +65,18 @@ function App() {
     );
   }
 
+  const classes = [];
+  if (persons.length <= 2) {
+    classes.push("red");
+  }
+  if (persons.length <= 1) {
+    classes.push("bold");
+  }
+
   return (
     <div className="App">
       <h1>Hi,I`m a React app.</h1>
+      <p className={classes.join(" ")}>正常に動作しています！</p>
       <button style={style} onClick={togglePersonsHandler}>
         Toggle Persons
       </button>
