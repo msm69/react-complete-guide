@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import "./App.css";
 import Person from "./Person/Person";
 
@@ -11,18 +12,19 @@ function App() {
 
   const [showPersons, setShowPersons] = useState(false);
 
-  const style = {
-    backgroundColor: "green",
-    color: "white",
-    font: "inherit",
-    border: "1px solid blue",
-    padding: "8px",
-    cursor: "pointer",
-    ":hover": {
-      backgroundColor: "lightgreen",
-      color: "black",
-    },
-  };
+  const StyledButton = styled.button`
+    background-color: ${(props) => (props.alt ? "red" : "green")};
+    color: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${(props) => (props.alt ? "salmon" : "lightgreen")};
+      color: black;
+    }
+  `;
 
   const nameChangeHandler = (event, id) => {
     const personIndex = persons.findIndex((element) => {
@@ -66,12 +68,6 @@ function App() {
         })}
       </div>
     );
-
-    style.backgroundColor = "red";
-    style[":hover"] = {
-      backgroundColor: "lightred",
-      color: "black",
-    };
   }
 
   const classes = [];
@@ -86,9 +82,9 @@ function App() {
     <div className="App">
       <h1>Hi,I`m a React app.</h1>
       <p className={classes.join(" ")}>正常に動作しています！</p>
-      <button style={style} onClick={togglePersonsHandler}>
+      <StyledButton alt={showPersons} onClick={togglePersonsHandler}>
         Toggle Persons
-      </button>
+      </StyledButton>
       {personsData}
     </div>
   );
