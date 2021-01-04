@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import "./App.css";
-import Person from "../components/Persons/Person/Person";
+import Persons from "../components/Persons/Persons";
 
 function App() {
   const [persons, setPersons] = useState([
@@ -55,17 +55,11 @@ function App() {
   if (showPersons) {
     personsData = (
       <div>
-        {persons.map((person, index) => {
-          return (
-            <Person
-              click={() => deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => nameChangeHandler(event, person.id)}
-            />
-          );
-        })}
+        <Persons
+          persons={persons}
+          clicked={deletePersonHandler}
+          changed={nameChangeHandler}
+        />
       </div>
     );
   }
