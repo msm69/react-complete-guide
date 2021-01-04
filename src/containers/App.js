@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import "./App.css";
 import Persons from "../components/Persons/Persons";
+import Cookpit from "../Cockpit/Cockpit";
 
 function App() {
   const [persons, setPersons] = useState([
@@ -11,20 +11,6 @@ function App() {
   ]);
 
   const [showPersons, setShowPersons] = useState(false);
-
-  const StyledButton = styled.button`
-    background-color: ${(props) => (props.alt ? "red" : "green")};
-    color: white;
-    font: inherit;
-    border: 1px solid blue;
-    padding: 8px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${(props) => (props.alt ? "salmon" : "lightgreen")};
-      color: black;
-    }
-  `;
 
   const nameChangeHandler = (event, id) => {
     const personIndex = persons.findIndex((element) => {
@@ -54,31 +40,21 @@ function App() {
   let personsData = null;
   if (showPersons) {
     personsData = (
-      <div>
-        <Persons
-          persons={persons}
-          clicked={deletePersonHandler}
-          changed={nameChangeHandler}
-        />
-      </div>
+      <Persons
+        persons={persons}
+        clicked={deletePersonHandler}
+        changed={nameChangeHandler}
+      />
     );
-  }
-
-  const classes = [];
-  if (persons.length <= 2) {
-    classes.push("red");
-  }
-  if (persons.length <= 1) {
-    classes.push("bold");
   }
 
   return (
     <div className="App">
-      <h1>Hi,I`m a React app.</h1>
-      <p className={classes.join(" ")}>正常に動作しています！</p>
-      <StyledButton alt={showPersons} onClick={togglePersonsHandler}>
-        Toggle Persons
-      </StyledButton>
+      <Cookpit
+        showPersons={showPersons}
+        persons={persons}
+        clicked={togglePersonsHandler}
+      />
       {personsData}
     </div>
   );
